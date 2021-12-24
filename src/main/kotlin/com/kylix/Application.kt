@@ -13,7 +13,7 @@ import io.ktor.locations.*
 
 @KtorExperimentalLocationsAPI
 fun main() {
-    embeddedServer(Netty, port = 8085, host = "localhost") {
+    embeddedServer(Netty, port = System.getenv("PORT").toInt(), host = "localhost") {
 
         DatabaseFactory.init()
         val db = Repository()
