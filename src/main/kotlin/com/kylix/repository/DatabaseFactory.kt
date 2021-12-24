@@ -41,7 +41,7 @@ object DatabaseFactory {
             val username = uri.userInfo.split(":").toTypedArray()[0]
             val password = uri.userInfo.split(":").toTypedArray()[1]
 
-            jdbcUrl = "jdbc:postgresql://" + uri.host + ":" + uri.port + uri.path + "?sslmode=require" + "user=$username&password=$password"
+            jdbcUrl = "jdbc:postgresql://" + uri.host + ":" + uri.port + uri.path + "?sslmode=require" + "&user=$username&password=$password"
 
             validate()
         }
