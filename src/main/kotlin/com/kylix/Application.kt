@@ -8,6 +8,7 @@ import com.kylix.plugins.*
 import com.kylix.repository.DatabaseFactory
 import com.kylix.repository.Repository
 import io.ktor.application.*
+import io.ktor.auth.*
 import io.ktor.locations.*
 
 @KtorExperimentalLocationsAPI
@@ -20,9 +21,10 @@ fun main() {
         val hashFunction = {s: String -> hash(s)}
 
         install(Locations)
+        install(Authentication)
 
+        configureSecurity(db, jwtService)
         configureRouting(db, jwtService, hashFunction)
-        //configureSecurity()
         configureSerialization()
     }.start(wait = true)
 }

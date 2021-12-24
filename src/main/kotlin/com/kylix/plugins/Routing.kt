@@ -4,6 +4,7 @@ import com.kylix.authentication.JWTService
 import com.kylix.authentication.hash
 import com.kylix.model.User
 import com.kylix.repository.Repository
+import com.kylix.routes.noteRoute
 import com.kylix.routes.userRouting
 import io.ktor.routing.*
 import io.ktor.http.*
@@ -25,6 +26,7 @@ fun Application.configureRouting(
         }
 
         userRouting(db, jwtService, hashFunction)
+        noteRoute(db, hashFunction)
 
         route("/notes") {
             route("/create") {

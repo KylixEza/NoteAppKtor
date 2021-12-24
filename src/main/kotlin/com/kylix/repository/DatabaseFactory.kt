@@ -1,5 +1,6 @@
 package com.kylix.repository
 
+import com.kylix.table.NoteTable
 import com.kylix.table.UserTable
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
@@ -16,6 +17,7 @@ object DatabaseFactory {
 
         transaction {
             SchemaUtils.create(UserTable)
+            SchemaUtils.create(NoteTable)
         }
     }
 
