@@ -45,7 +45,7 @@ fun Route.userRouting(
         }
 
         try {
-            val user = User(registerRequest.email, hashFunction(registerRequest.password), registerRequest.name)
+            val user = User(registerRequest.email, registerRequest.name, hashFunction(registerRequest.password))
             db.addUser(user)
             call.respond(HttpStatusCode.OK, Response(true, jwtService.generateToken(user)))
         } catch (e: Exception) {
@@ -65,6 +65,8 @@ fun Route.userRouting(
             if (user == null) {
                 call.respond(HttpStatusCode.BadRequest, Response(false, "Wrong Email"))
             } else {
+                println("user hash password: ${user.hashPassword}")
+                println("hash function login request ${hashFunction(loginRequest.password)}")
                 if (user.hashPassword == hashFunction(loginRequest.password)) {
                     call.respond(HttpStatusCode.OK, Response(true, jwtService.generateToken(user)))
                 } else {

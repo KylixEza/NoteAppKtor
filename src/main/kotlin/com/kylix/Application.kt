@@ -12,7 +12,7 @@ import io.ktor.locations.*
 
 @KtorExperimentalLocationsAPI
 fun main() {
-    embeddedServer(Netty, port = 8082, host = "localhost") {
+    embeddedServer(Netty, port = 8085, host = "localhost") {
 
         DatabaseFactory.init()
         val db = Repository()
@@ -21,7 +21,7 @@ fun main() {
 
         install(Locations)
 
-        configureRouting(db, jwtService, hashFunction, )
+        configureRouting(db, jwtService, hashFunction)
         //configureSecurity()
         configureSerialization()
     }.start(wait = true)
