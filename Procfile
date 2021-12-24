@@ -1,1 +1,1 @@
-web: build/install/NoteAppKtor/bin/NoteAppKtor
+web: ./build/install/NoteAppKtor/bin/NoteAppKtor
